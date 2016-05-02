@@ -1,11 +1,11 @@
 node_modules
 package.json
 npm-debug.log
-sinopia-*.tgz
+nexxtopia-*.tgz
 
 ###
 bin/**
-!bin/sinopia
+!bin/nexxtopia
 test-storage*
 
 /.*

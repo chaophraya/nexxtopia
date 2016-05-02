@@ -4,7 +4,7 @@ sinopia-*.tgz
 
 ###
 bin/**
-!bin/sinopia
+!bin/nexxtopia
 test-storage*
 npm_storage/
 node_modules
