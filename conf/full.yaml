@@ -1,13 +1,10 @@
+#
+# This is the default config file. It allows all users to do anything,
+# so don't use it on production systems.
+#
+
 # path to a directory with all packages
 storage: ./storage
-
-# a list of users
-#
-# This could be deprecated soon, use auth plugins instead (see htpasswd below).
-users:
-  admin:
-    # crypto.createHash('sha1').update(pass).digest('hex')
-    password: a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
 
 web:
   # web interface is disabled by default in 0.x, will be enabled soon in 1.x
@@ -15,18 +12,31 @@ web:
   #
   # set this to `true` if you want to experiment with web ui now;
   # this has a lot of issues, e.g. no auth yet, so use at your own risk
-  #enable: true
+  enable: true
+  title: Nexxtopia
+  login_redirect_url: '/auth/github'
+  logout_redirect_url: '/'
 
-  title: Sinopia
-  # logo: logo.png
-  # template: custom.hbs
+middlewares:
+  github-auth:
+    session: secret-1234
+    client_id: clientid-1234
+    client_secret: clientsecret-1234
+    authorization_url: https://github.com/login/oauth/authorize
+    token_url: https://github.com/login/oauth/access_token
+    authorization_callback_url: http://localhost:4873/auth/github/callback
+    github_url: https://github.com
+    github_api_url: https://github.com/api/v3
+    org: teamA
+    scopes:
+      - read:org
 
 auth:
-  htpasswd:
-    file: ./htpasswd
-    # Maximum amount of users allowed to register, defaults to "+inf".
-    # You can set this to -1 to disable registration.
-    #max_users: 1000
+  github-auth:
+    cache_ttl_ms: 60000
+    github_url: https://github.com
+    github_api_url: https://github.com/api/v3
+    org: teamA
 
 # a list of other known repositories we can talk to
 uplinks:
@@ -41,7 +51,7 @@ uplinks:
     #
     # default is 2 minutes, so server won't request the same data from
     # uplink if a similar request was made less than 2 minutes ago
-    #maxage: 2m
+    maxage: 2m
 
     # if two subsequent requests fail, no further requests will be sent to
     # this uplink for five minutes
@@ -49,26 +59,33 @@ uplinks:
     #fail_timeout: 5m
 
     # timeouts are defined in the same way as nginx, see:
-    # http://wiki.nginx.org/ConfigNotation
+    # https://www.nginx.com/resources/wiki/
 
 packages:
-  # uncomment this for packages with "local-" prefix to be available
-  # for admin only, it's a recommended way of handling private packages
-  #'local-*':
-  #  access: admin
-  #  publish: admin
-  #  # you can override storage directory for a group of packages this way:
-  #  storage: 'local_storage'
+    # uncomment this for packages with "local-" prefix to be available
+    # for admin only, it's a recommended way of handling private packages
+    #'local-*':
+    #  access: admin
+    #  publish: admin
+    #  # you can override storage directory for a group of packages this way:
+    #  storage: 'local_storage'
+
+  '@*/*':
+    access: $all
+    publish: none
+    proxy: npmjs
 
   '*':
-    # allow all users to read packages (including non-authenticated users)
+    # allow all users (including non-authenticated users) to read and
+    # publish all packages
     #
     # you can specify usernames/groupnames (depending on your auth plugin)
     # and three keywords: "$all", "$anonymous", "$authenticated"
     access: $all
 
-    # allow 'admin' to publish packages
-    publish: admin
+    # allow all known users to publish packages
+    # (anyone can register by default, remember?)
+    publish: none
 
     # if package is not available locally, proxy requests to 'npmjs' registry
     proxy: npmjs
@@ -94,7 +111,7 @@ packages:
 # - unix:/tmp/sinopia.sock    # unix socket
 
 # Configure HTTPS, it is required if you use "https" protocol above.
-#https:
+https:
 #  key: path/to/server.key
 #  cert: path/to/server.crt
 
@@ -125,7 +142,5 @@ logs:
 # and the highest semver is placed instead.
 #ignore_latest_tag: false
 
-# Configure plugins that can register custom middlewares
-#middlewares:
-# plugin-name:
-#   setting: true
+listen:
+  - 0.0.0.0:4873
