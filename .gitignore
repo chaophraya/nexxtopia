@@ -6,5 +6,5 @@ sinopia-*.tgz
 bin/**
 !bin/sinopia
 test-storage*
-
+npm_storage/
 node_modules
