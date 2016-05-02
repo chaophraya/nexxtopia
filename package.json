@@ -1,6 +1,6 @@
 {
   "name": "nexxtopia",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Private npm repository server",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "bin": {
-    "sinopia": "./bin/sinopia"
+    "nexxtopia": "./bin/nexxtopia"
   },
   "dependencies": {
     "JSONStream": "1.x",
@@ -38,8 +38,7 @@
     "readable-stream": "2.0.5",
     "render-readme": ">=0.2.1",
     "request": ">=2.31.0 <3.0.0-0",
-    "semver": "5.0.0",
-    "sinopia-htpasswd": ">= 0.4.3"
+    "semver": "5.0.0"
   },
   "optionalDependencies": {
     "fs-ext": ">=0.5.0 <1.0.0-0",
@@ -77,8 +76,7 @@
     "clean-shrinkwrap": "node -e '\n  function clean(j) {\n    if (!j) return\n    for (var k in j) {\n      delete j[k].from\n      delete j[k].resolved\n      if (j[k].dependencies) clean(j[k].dependencies)\n    }\n  }\n  x = JSON.parse(require(\"fs\").readFileSync(\"./npm-shrinkwrap.json\"))\n  clean(x.dependencies)\n  x = JSON.stringify(x, null, \"  \")\n  require(\"fs\").writeFileSync(\"./npm-shrinkwrap.json\", x + \"\\n\")\n'\n"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": ">=6.0"
   },
-  "preferGlobal": true,
   "license": "MIT"
 }

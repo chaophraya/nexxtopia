@@ -1,7 +1,7 @@
 # use "yapm install ." if you're installing this from git repository
 
 name: nexxtopia
-version: 0.1.5
+version: 0.1.6
 description: Private npm repository server
 
 repository:
@@ -11,7 +11,7 @@ repository:
 main: index.js
 
 bin:
-  sinopia: ./bin/sinopia
+  nexxtopia: ./bin/nexxtopia
 
 dependencies:
   express: '^4.0.0'
@@ -125,7 +125,7 @@ scripts:
 # we depend on streams2 stuff
 # it can be replaced with isaacs/readable-stream, ask if you need to use 0.8
 engines:
-  node: '>=0.10'
+  node: '>=6.0'
 
 preferGlobal: true
 
