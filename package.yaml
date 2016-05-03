@@ -1,7 +1,7 @@
 # use "yapm install ." if you're installing this from git repository
 
 name: nexxtopia
-version: 0.1.9
+version: 0.1.10
 description: Private npm repository server
 
 repository:
@@ -47,6 +47,8 @@ dependencies:
   mkdirp: '>=0.3.5 <1.0.0-0'
   sinopia-htpasswd: '>= 0.4.3'
   http-errors: '>=1.2.0'
+
+  nexxtopia-github-auth: '0.1.5'
 
   # node 0.10 compatibility, should go away soon
   readable-stream: '^2.0.5'
