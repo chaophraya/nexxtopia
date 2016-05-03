@@ -1,7 +1,7 @@
 # use "yapm install ." if you're installing this from git repository
 
 name: nexxtopia
-version: 0.1.12
+version: 0.1.13
 description: Private npm repository server
 
 repository:
