@@ -48,7 +48,7 @@ dependencies:
   sinopia-htpasswd: '>= 0.4.3'
   http-errors: '>=1.2.0'
 
-  nexxtopia-github-auth: '0.1.7'
+  nexxtopia-github-auth: '0.1.8'
 
   # node 0.10 compatibility, should go away soon
   readable-stream: '^2.0.5'
