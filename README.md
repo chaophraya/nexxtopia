@@ -1,4 +1,6 @@
-# Nexxtopia
+# Nexxtopia 
+[![npm version badge](https://img.shields.io/npm/v/nexxtopia.svg)](https://www.npmjs.org/package/nexxtopia)
+[![Build Status](https://travis-ci.org/chaophraya/nexxtopia.svg?branch=master)](https://travis-ci.org/chaophraya/nexxtopia)
 
 `nexxtopia` - a private/caching npm repository server
 
