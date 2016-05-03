@@ -1,6 +1,6 @@
 {
   "name": "nexxtopia",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Private npm repository server",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "express-session": "1.13.0",
     "got": "6.3.0",
     "handlebars": "4.0.5",
+    "helmet": "^2.0.0",
     "highlight.js": "9.1.0",
     "http-errors": ">=1.2.0",
     "jju": "1.x",
@@ -33,7 +34,7 @@
     "lunr": ">=0.5.2 <1.0.0-0",
     "minimatch": "3.0.0",
     "mkdirp": ">=0.3.5 <1.0.0-0",
-    "nexxtopia-github-auth": "0.1.5",
+    "nexxtopia-github-auth": "0.1.6",
     "passport": "0.3.2",
     "passport-oauth2": "1.3.0",
     "readable-stream": "2.0.5",
