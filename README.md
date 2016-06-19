@@ -4,6 +4,8 @@
 
 `nexxtopia` - a private/caching npm repository server
 
+[![NPM](https://nodei.co/npm/nexxtopia.png?downloads=true)](https://nodei.co/npm/nexxtopia)
+
 ## Warning
 This component should not not be considered ready for production (until it will reach 1.0.0)
 
